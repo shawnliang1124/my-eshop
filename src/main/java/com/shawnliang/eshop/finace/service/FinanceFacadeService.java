@@ -1,8 +1,8 @@
 package com.shawnliang.eshop.finace.service;
 
-import com.shawnliang.eshop.wms.domain.PurchaseInputOrderDTO;
-import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDTO;
-import com.shawnliang.eshop.wms.domain.SaleDeliveryOrderDTO;
+import com.shawnliang.eshop.wms.domain.PurchaseInputOrderDO;
+import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDO;
+import com.shawnliang.eshop.wms.domain.SaleDeliveryOrderDO;
 
 /**
  * Description :   .
@@ -14,26 +14,26 @@ public interface FinanceFacadeService {
 
     /**
      * 创建采购结算单
-     * @param purchaseInputOrderDTO 采购入库单DTO
+     * @param purchaseInputOrderDO 采购入库单DTO
      * @return 处理结果
      */
     Boolean createPurchaseSettlementOrder(
-            PurchaseInputOrderDTO purchaseInputOrderDTO);
+            PurchaseInputOrderDO purchaseInputOrderDO);
 
     /**
      * 给物流公司打款
-     * @param saleDeliveryOrderDTO 销售出库单
+     * @param saleDeliveryOrderDO 销售出库单
      * @return 处理结果
      */
     Boolean payForLogisticsCompany(
-            SaleDeliveryOrderDTO saleDeliveryOrderDTO);
+            SaleDeliveryOrderDO saleDeliveryOrderDO);
 
     /**
      * 执行退货退款操作
-     * @param returnGoodsInputOrderDTO 退货入库单DTO
+     * @param returnGoodsInputOrderDO 退货入库单DTO
      * @return 处理结果
      */
     Boolean executeReturnGoodsRefund(
-            ReturnGoodsInputOrderDTO returnGoodsInputOrderDTO);
+            ReturnGoodsInputOrderDO returnGoodsInputOrderDO);
 
 }

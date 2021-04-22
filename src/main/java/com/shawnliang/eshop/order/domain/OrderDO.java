@@ -10,7 +10,7 @@ import lombok.Data;
  * @date : Created in 2021/4/21
  */
 @Data
-public class OrderDto {
+public class OrderDO {
 
     /**
      * id

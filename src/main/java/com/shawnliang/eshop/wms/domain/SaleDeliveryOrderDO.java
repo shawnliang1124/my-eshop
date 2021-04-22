@@ -8,7 +8,7 @@ import java.util.Date;
  * @author : Phoebe
  * @date : Created in 2021/4/21
  */
-public class SaleDeliveryOrderDTO {
+public class SaleDeliveryOrderDO {
 
     /**
      * id
