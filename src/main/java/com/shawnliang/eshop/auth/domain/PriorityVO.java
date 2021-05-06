@@ -1,6 +1,5 @@
 package com.shawnliang.eshop.auth.domain;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;
 import lombok.Data;
 
@@ -11,8 +10,7 @@ import lombok.Data;
  * @date : Created in 2021/4/22
  */
 @Data
-@TableName("auth_priority")
-public class PriorityDO {
+public class PriorityVO {
 
     /**
      * id

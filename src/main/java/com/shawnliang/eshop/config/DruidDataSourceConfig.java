@@ -51,14 +51,6 @@ public class DruidDataSourceConfig {
     private boolean testOnBorrow;
     @Value("${spring.datasource.testOnReturn}")
     private boolean testOnReturn;
-    @Value("${spring.datasource.poolPreparedStatements}")
-    private boolean poolPreparedStatements;
-    @Value("${spring.datasource.maxPoolPreparedStatementPerConnectionSize}")
-    private int maxPoolPreparedStatementPerConnectionSize;
-    @Value("${spring.datasource.filters}")
-    private String filters;
-    @Value("{spring.datasource.connectionProperties}")
-    private String connectionProperties;
 
     /**
      * 创建druid数据库连接池bean
@@ -82,16 +74,7 @@ public class DruidDataSourceConfig {
         datasource.setTestWhileIdle(testWhileIdle);
         datasource.setTestOnBorrow(testOnBorrow);
         datasource.setTestOnReturn(testOnReturn);
-        datasource.setPoolPreparedStatements(poolPreparedStatements);
-        datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
 
-        try {
-            datasource.setFilters(filters);
-        } catch (SQLException e) {
-            log.error("数据库连接异常", e);
-        }
-
-        datasource.setConnectionProperties(connectionProperties);
 
         return datasource;
     }
