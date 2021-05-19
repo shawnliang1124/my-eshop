@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shawnliang.eshop.auth.dao.CommentPictureMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shawnliang.eshop.auth.domain.CommentPictureDO">
+        <id column="id" property="id" />
+        <result column="comment_info_id" property="commentInfoId" />
+        <result column="sequence" property="sequence" />
+        <result column="comment_picture_path" property="commentPicturePath" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+</mapper>
