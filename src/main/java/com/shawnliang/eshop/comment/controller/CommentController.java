@@ -1,4 +1,4 @@
-package com.shawnliang.eshop.auth.controller;
+package com.shawnliang.eshop.comment.controller;
 
 import com.shawnliang.eshop.comment.constant.ShowPictures;
 import com.shawnliang.eshop.comment.domain.CommentInfoDTO;
@@ -6,6 +6,8 @@ import com.shawnliang.eshop.comment.domain.CommentInfoVO;
 import com.shawnliang.eshop.comment.service.CommentAggregateService;
 import com.shawnliang.eshop.comment.service.CommentInfoService;
 import com.shawnliang.eshop.comment.service.CommentPicService;
+import com.shawnliang.eshop.membership.service.MembershipFacadeService;
+import com.shawnliang.eshop.order.service.OrderFacadeService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +36,11 @@ public class CommentController {
     @Autowired
     private CommentAggregateService commentAggregateService;
 
+    @Autowired
+    private OrderFacadeService orderFacadeService;
+
+    @Autowired
+    private MembershipFacadeService membershipFacadeService;
 
     /**
      * 手动发表评论
@@ -42,7 +49,7 @@ public class CommentController {
      */
     @PostMapping("/")
     @Transactional(rollbackFor = Exception.class)
-    public Boolean publishComment(HttpServletRequest request,
+    public void publishComment(HttpServletRequest request,
             CommentInfoVO commentInfoVO, MultipartFile[] files) {
         Integer showPicture = ShowPictures.NO;
         if (files != null && files.length > 0) {
@@ -58,7 +65,7 @@ public class CommentController {
         commentInfoVO.setIsShowPictures(showPicture);
         CommentInfoDTO commentInfoDTO = BeanUtil
                 .copyPropertiesJson(commentInfoVO, CommentInfoDTO.class);
-        commentInfoService.saveCommentInfo(commentInfoDTO);
+        commentInfoService.saveManualCommentInfo(commentInfoDTO);
 
         // 上传评论晒图图片
         String appBasePath = request.getSession().getServletContext().getRealPath("/");
@@ -67,6 +74,10 @@ public class CommentController {
         // 更新评论统计信息
         commentAggregateService.updateCommentAggregate(commentInfoDTO);
 
+        orderFacadeService.informPublishCommentEvent(commentInfoDTO.getOrderInfoId());
+
+        membershipFacadeService.informPublishCommentEvent(commentInfoDTO.getUserAccountId(),
+                commentInfoDTO.getIsShowPictures());
     }
 
 }

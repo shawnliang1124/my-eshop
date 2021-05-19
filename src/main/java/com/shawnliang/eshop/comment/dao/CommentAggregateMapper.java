@@ -1,6 +1,6 @@
-package com.shawnliang.eshop.auth.dao;
+package com.shawnliang.eshop.comment.dao;
 
-import com.shawnliang.eshop.auth.domain.CommentAggregateDO;
+import com.shawnliang.eshop.comment.domain.CommentAggregateDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

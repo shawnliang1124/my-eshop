@@ -1,12 +1,8 @@
 package com.shawnliang.eshop.comment.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -17,16 +13,9 @@ import lombok.experimental.Accessors;
  * @since 2021-05-18
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-public class CommentInfoDO implements Serializable {
+public class CommentInfoDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -43,6 +32,8 @@ public class CommentInfoDO implements Serializable {
      * 订单ID
      */
     private Long orderInfoId;
+
+    private Long orderItemId;
 
     /**
      * 商品ID

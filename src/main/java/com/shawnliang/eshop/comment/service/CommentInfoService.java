@@ -1,6 +1,8 @@
 package com.shawnliang.eshop.comment.service;
 
 import com.shawnliang.eshop.comment.domain.CommentInfoDTO;
+import com.shawnliang.eshop.order.domain.OrderInfoDTO;
+import com.shawnliang.eshop.order.domain.OrderItemDTO;
 
 /**
  * Description :   .
@@ -8,13 +10,21 @@ import com.shawnliang.eshop.comment.domain.CommentInfoDTO;
  * @author : Phoebe
  * @date : Created in 2021/5/18
  */
-public interface CommentService {
+public interface CommentInfoService {
 
     /**
-     * 保存评论
+     * 手动保存评论
      * @param commentInfoDTO 评论DTO
      * @return
      */
-    Boolean saveCommentInfo(CommentInfoDTO commentInfoDTO);
+    Boolean saveManualCommentInfo(CommentInfoDTO commentInfoDTO);
+
+    /**
+     * 自动保存评论
+     * @param orderInfoDTO
+     * @param orderItemDTO
+     * @return
+     */
+    CommentInfoDTO saveAutoCommentInfo(OrderInfoDTO orderInfoDTO, OrderItemDTO orderItemDTO);
 
 }

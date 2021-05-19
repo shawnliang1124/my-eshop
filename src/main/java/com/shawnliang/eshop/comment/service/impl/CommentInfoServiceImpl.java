@@ -3,10 +3,13 @@ package com.shawnliang.eshop.comment.service.impl;
 import com.shawnliang.eshop.comment.constant.CommentStatus;
 import com.shawnliang.eshop.comment.constant.CommentType;
 import com.shawnliang.eshop.comment.constant.DefaultComment;
+import com.shawnliang.eshop.comment.constant.ShowPictures;
 import com.shawnliang.eshop.comment.domain.CommentInfoDO;
 import com.shawnliang.eshop.comment.domain.CommentInfoDTO;
 import com.shawnliang.eshop.comment.manager.CommentInfoManager;
-import com.shawnliang.eshop.comment.service.CommentService;
+import com.shawnliang.eshop.comment.service.CommentInfoService;
+import com.shawnliang.eshop.order.domain.OrderInfoDTO;
+import com.shawnliang.eshop.order.domain.OrderItemDTO;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +24,13 @@ import utils.BeanUtil;
  */
 @Service
 @Slf4j
-public class CommentServiceImpl implements CommentService {
+public class CommentInfoServiceImpl implements CommentInfoService {
 
     @Autowired
     private CommentInfoManager commentInfoManager;
 
     @Override
-    public Boolean saveCommentInfo(CommentInfoDTO commentInfoDTO) {
+    public Boolean saveManualCommentInfo(CommentInfoDTO commentInfoDTO) {
         // 计算总分
         Integer totalScore = Math.round((commentInfoDTO.getCustomerServiceScore()
         + commentInfoDTO.getGoodsScore()
@@ -56,5 +59,40 @@ public class CommentServiceImpl implements CommentService {
         CommentInfoDO commentInfoDO = BeanUtil
                 .copyPropertiesJson(commentInfoDTO, CommentInfoDO.class);
         return commentInfoManager.save(commentInfoDO);
+    }
+
+    @Override
+    public CommentInfoDTO saveAutoCommentInfo(OrderInfoDTO orderInfoDTO, OrderItemDTO orderItemDTO) {
+        CommentInfoDTO commentInfoDTO = createOrderInfo(orderInfoDTO, orderItemDTO);
+        CommentInfoDO commentInfoDO = BeanUtil
+                .copyPropertiesJson(commentInfoDTO, CommentInfoDO.class);
+
+        // 保存到数据库中
+        commentInfoManager.save(commentInfoDO);
+        return commentInfoDTO;
+    }
+
+    private CommentInfoDTO createOrderInfo(OrderInfoDTO orderInfoDTO, OrderItemDTO orderItemDTO) {
+        CommentInfoDTO commentInfoDTO = new CommentInfoDTO();
+
+        commentInfoDTO.setUserAccountId(orderInfoDTO.getUserAccountId());
+        commentInfoDTO.setUsername(orderInfoDTO.getUsername());
+        commentInfoDTO.setOrderInfoId(orderInfoDTO.getId());
+        commentInfoDTO.setOrderInfoId(orderItemDTO.getId());
+        commentInfoDTO.setGoodsId(orderItemDTO.getGoodsId());
+        commentInfoDTO.setGoodsSkuId(orderItemDTO.getGoodsSkuId());
+        commentInfoDTO.setGoodsSkuSaleProperties(orderItemDTO.getSaleProperties());
+        commentInfoDTO.setTotalScore(5);
+        commentInfoDTO.setGoodsScore(5);
+        commentInfoDTO.setCustomerServiceScore(5);
+        commentInfoDTO.setLogisticsScore(5);
+        commentInfoDTO.setCommentContent("");
+        commentInfoDTO.setIsShowPictures(ShowPictures.NO);
+        commentInfoDTO.setIsDefaultComment(DefaultComment.YES);
+        commentInfoDTO.setCommentStatus(CommentStatus.APPROVED);
+        commentInfoDTO.setCommentType(CommentType.GOOD_COMMENT);
+        commentInfoDTO.setGmtCreate(LocalDateTime.now());
+
+        return commentInfoDTO;
     }
 }

@@ -37,7 +37,7 @@ public interface MembershipFacadeService {
      * @param showPictures 是否晒图
      * @return 处理结果
      */
-    Boolean informPublishCommentEvent(Long userAccountId, Boolean showPictures);
+    Boolean informPublishCommentEvent(Long userAccountId, Integer showPictures);
 
     /**
      * 通知会员中心，“删除评论”事件发生了

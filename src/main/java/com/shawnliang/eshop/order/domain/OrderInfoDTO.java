@@ -1,4 +1,4 @@
-package com.zhss.eshop.order.domain;
+package com.shawnliang.eshop.order.domain;
 
 import java.util.Date;
 import java.util.List;
@@ -98,7 +98,7 @@ public class OrderInfoDTO {
 	 * 订单包含的订单条目
 	 */
 	private List<OrderItemDTO> orderItems;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -231,5 +231,5 @@ public class OrderInfoDTO {
 	public void setOrderItems(List<OrderItemDTO> orderItems) {
 		this.orderItems = orderItems;
 	}
-	
+
 }

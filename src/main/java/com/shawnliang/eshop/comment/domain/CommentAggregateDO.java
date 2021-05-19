@@ -1,4 +1,4 @@
-package com.shawnliang.eshop.auth.domain;
+package com.shawnliang.eshop.comment.domain;
 
 import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;

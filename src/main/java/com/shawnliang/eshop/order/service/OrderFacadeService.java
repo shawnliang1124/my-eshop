@@ -1,5 +1,8 @@
 package com.shawnliang.eshop.order.service;
 
+import com.shawnliang.eshop.order.domain.OrderInfoDTO;
+import java.util.List;
+
 /**
  * Description :   .
  *
@@ -51,5 +54,23 @@ public interface OrderFacadeService {
      */
     Boolean informRefundFinishedEvent(Long orderId);
 
+    /**
+     * 通知订单中心，“订单发表评论”事件发生了
+     * @param orderId 订单id
+     * @return 处理结果
+     */
+    Boolean informPublishCommentEvent(Long orderId);
 
+
+    /**
+     * 查询出没有发表评论的订单
+     * @return
+     */
+    List<OrderInfoDTO> listNotPublishCommentOrders();
+
+    /**
+     * 批量进行统计事件
+     * @param orderIds
+     */
+    void informBatchPublishCommentEvent(List<Long> orderIds);
 }

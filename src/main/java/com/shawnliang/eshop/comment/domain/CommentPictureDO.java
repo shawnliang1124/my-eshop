@@ -1,4 +1,4 @@
-package com.shawnliang.eshop.auth.domain;
+package com.shawnliang.eshop.comment.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

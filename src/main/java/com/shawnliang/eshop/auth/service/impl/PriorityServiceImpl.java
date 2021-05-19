@@ -2,16 +2,13 @@ package com.shawnliang.eshop.auth.service.impl;
 
 import com.shawnliang.eshop.auth.domain.PriorityDO;
 import com.shawnliang.eshop.auth.domain.PriorityDTO;
-import com.shawnliang.eshop.auth.domain.PriorityVO;
 import com.shawnliang.eshop.auth.manager.PriorityManager;
 import com.shawnliang.eshop.auth.service.PriorityService;
 import com.shawnliang.eshop.exceptions.BizException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import utils.BeanUtil;
 
 /**

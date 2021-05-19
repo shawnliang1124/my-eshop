@@ -1,7 +1,7 @@
-package com.shawnliang.eshop.auth.manager;
+package com.shawnliang.eshop.comment.manager;
 
-import com.shawnliang.eshop.auth.domain.CommentInfoDO;
-import com.shawnliang.eshop.auth.dao.CommentInfoMapper;
+import com.shawnliang.eshop.comment.domain.CommentInfoDO;
+import com.shawnliang.eshop.comment.dao.CommentInfoMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Repository;
 

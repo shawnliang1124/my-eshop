@@ -1,8 +1,6 @@
 package com.shawnliang.eshop.auth.service;
 
-import com.shawnliang.eshop.auth.domain.PriorityDO;
 import com.shawnliang.eshop.auth.domain.PriorityDTO;
-import com.shawnliang.eshop.auth.domain.PriorityVO;
 import java.util.List;
 
 /**
@@ -24,14 +22,14 @@ public interface PriorityService {
      * @param parentId
      * @return
      */
-    public List<PriorityDTO> listChildPriorities(Long parentId);
+    List<PriorityDTO> listChildPriorities(Long parentId);
 
     /**
      * 根据ID 查询权限
      * @param id
      * @return
      */
-    public PriorityDTO getPriorityById(Long id);
+    PriorityDTO getPriorityById(Long id);
 
     /**
      * 新增权限
@@ -41,7 +39,7 @@ public interface PriorityService {
     Long insertPriority(PriorityDTO priorityVO);
 
     /**
-     * 更新权限
+     * 更新权限'
      * @param priorityVO
      * @return
      */

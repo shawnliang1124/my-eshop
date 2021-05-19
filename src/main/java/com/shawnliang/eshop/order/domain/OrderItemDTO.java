@@ -1,4 +1,4 @@
-package com.zhss.eshop.order.domain;
+package com.shawnliang.eshop.order.domain;
 
 import java.util.Date;
 
@@ -73,7 +73,7 @@ public class OrderItemDTO {
 	 * 订单条目的修改时间
 	 */
 	private Date gmtModified;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -170,5 +170,5 @@ public class OrderItemDTO {
 	public void setGmtModified(Date gmtModified) {
 		this.gmtModified = gmtModified;
 	}
-	
+
 }

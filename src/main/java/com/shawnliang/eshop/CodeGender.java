@@ -126,7 +126,7 @@ public class CodeGender {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
-        dsc.setUrl("jdbc:mysql://39.102.96.255:3306/eshop?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://159.75.25.120:3306/eshop?useUnicode=true&useSSL=false&characterEncoding=utf8");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("123456");
@@ -140,7 +140,7 @@ public class CodeGender {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setEntityBuilderModel(true);
-        strategy.setInclude("auth_account");
+        strategy.setInclude("comment_aggregate", "comment_info", "comment_picture");
         mpg.setStrategy(strategy);
 
         mpg.execute();

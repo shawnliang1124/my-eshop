@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shawnliang.eshop.auth.dao.CommentInfoMapper">
+<mapper namespace="com.shawnliang.eshop.comment.dao.CommentInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.shawnliang.eshop.auth.domain.CommentInfoDO">
+    <resultMap id="BaseResultMap" type="com.shawnliang.eshop.comment.domain.CommentInfoDO">
         <id column="id" property="id" />
         <result column="user_account_id" property="userAccountId" />
         <result column="username" property="username" />
