@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shawnliang.eshop.wms.dao.WmsPurchaseInputOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderDO">
+        <id column="id" property="id" />
+        <result column="supplier_id" property="supplierId" />
+        <result column="expect_arrival_time" property="expectArrivalTime" />
+        <result column="arrival_time" property="arrivalTime" />
+        <result column="purchase_contactor" property="purchaseContactor" />
+        <result column="purchase_contact_phone_number" property="purchaseContactPhoneNumber" />
+        <result column="purchase_contact_email" property="purchaseContactEmail" />
+        <result column="purchase_input_order_comment" property="purchaseInputOrderComment" />
+        <result column="purchaser" property="purchaser" />
+        <result column="purchase_input_order_status" property="purchaseInputOrderStatus" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+</mapper>

@@ -58,7 +58,7 @@ public class CodeGender {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("")
-                .setParent("com.shawnliang.eshop.auth")
+                .setParent("com.shawnliang.eshop.wms")
                 .setMapper("dao")
                 .setEntity("domain")
                 .setServiceImpl("manager")
@@ -91,6 +91,7 @@ public class CodeGender {
                 String path= absPath + "/src/main/java/" + pc.getParent().replace(".", "/")
                         + "/" + pc.getServiceImpl()
                         + "/" + tableInfo.getEntityName() + "Manager" + StringPool.DOT_JAVA;
+                path = path.replace("DO", "").trim();
                 System.out.println(path);
                 return path;
             }
@@ -140,7 +141,7 @@ public class CodeGender {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setEntityBuilderModel(true);
-        strategy.setInclude("comment_aggregate", "comment_info", "comment_picture");
+        strategy.setInclude("wms_purchase_input_put_on_item");
         mpg.setStrategy(strategy);
 
         mpg.execute();

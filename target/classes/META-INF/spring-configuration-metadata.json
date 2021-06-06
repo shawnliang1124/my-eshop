@@ -1,0 +1,16 @@
+{
+  "groups": [
+    {
+      "name": "biz.comment",
+      "type": "com.shawnliang.eshop.comment.properties.BizCommentProperties",
+      "sourceType": "com.shawnliang.eshop.comment.properties.BizCommentProperties"
+    },
+    {
+      "name": "biz.comment.pic",
+      "type": "com.shawnliang.eshop.comment.properties.BizCommentProperties$Pic",
+      "sourceType": "com.shawnliang.eshop.comment.properties.BizCommentProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

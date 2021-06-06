@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shawnliang.eshop.comment.dao.CommentInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shawnliang.eshop.comment.domain.CommentInfoDO">
+        <id column="id" property="id" />
+        <result column="user_account_id" property="userAccountId" />
+        <result column="username" property="username" />
+        <result column="order_info_id" property="orderInfoId" />
+        <result column="goods_id" property="goodsId" />
+        <result column="goods_sku_id" property="goodsSkuId" />
+        <result column="goods_sku_sale_properties" property="goodsSkuSaleProperties" />
+        <result column="total_score" property="totalScore" />
+        <result column="goods_score" property="goodsScore" />
+        <result column="customer_service_score" property="customerServiceScore" />
+        <result column="logistics_score" property="logisticsScore" />
+        <result column="comment_content" property="commentContent" />
+        <result column="is_show_pictures" property="isShowPictures" />
+        <result column="is_default_comment" property="isDefaultComment" />
+        <result column="comment_status" property="commentStatus" />
+        <result column="comment_type" property="commentType" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+</mapper>
