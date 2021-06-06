@@ -12,7 +12,7 @@ import org.assertj.core.util.Lists;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.BeanUtil;
+import com.shawnliang.eshop.utils.BeanUtil;
 
 /**
  * Description :   .

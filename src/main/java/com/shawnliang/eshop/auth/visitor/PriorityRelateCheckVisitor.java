@@ -6,7 +6,7 @@ import com.shawnliang.eshop.auth.manager.PriorityManager;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
-import utils.BeanUtil;
+import com.shawnliang.eshop.utils.BeanUtil;
 
 /**
  * Description 权限树节点的关联检查访问者 :   .

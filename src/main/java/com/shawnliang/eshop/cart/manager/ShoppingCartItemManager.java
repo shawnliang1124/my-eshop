@@ -7,6 +7,8 @@ import com.shawnliang.eshop.cart.dao.ShoppingCartItemMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  * 购物车的商品条目 Manager层
@@ -31,6 +33,19 @@ public class ShoppingCartItemManager extends ServiceImpl<ShoppingCartItemMapper,
                 .eq(ShoppingCartItemDO::getGoodsSkuId, goodsSkuId);
 
         return this.baseMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * +根据购物车Id 批量查询购物车的条目
+     * @param shoppingCartId
+     * @return
+     */
+    public List<ShoppingCartItemDO> listByShopCartId(Long shoppingCartId) {
+        LambdaQueryWrapper<ShoppingCartItemDO> queryWrapper = new QueryWrapper<ShoppingCartItemDO>()
+                .lambda()
+                .eq(ShoppingCartItemDO::getShoppingCartId, shoppingCartId);
+
+        return this.baseMapper.selectList(queryWrapper);
     }
 
 }

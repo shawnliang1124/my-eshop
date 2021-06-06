@@ -1,9 +1,12 @@
-package com.shawnliang.eshop.inventory.command;
+package com.shawnliang.eshop.inventory.updater;
 
 import com.shawnliang.eshop.inventory.domain.InventoryGoodsStockDO;
 import com.shawnliang.eshop.inventory.manager.InventoryGoodsStockManager;
 import com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderDTO;
 import java.util.List;
+import java.util.Map;
+
+import com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -12,23 +15,24 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author : Phoebe
  * @date : Created in 2021/5/21
  */
-public class PurchaseInputStockUpdateCommand extends AbstractGoodsStockUpdaterCommand{
+public class PurchaseInputStockUpdater extends AbstractGoodsStockUpdaterCommand{
 
     /**
-     * 采购·1入库单DTO
+     * 采购入库单条目DTO集合
      */
-    private WmsPurchaseInputOrderDTO purchaseInputOrderDTO;
+    private Map<Long, WmsPurchaseInputOrderItemDTO> purchaseInputOrderItemDTOMap;
 
 
     @Autowired
     private InventoryGoodsStockManager inventoryGoodsStockManager;
 
-    public PurchaseInputStockUpdateCommand(
+    public PurchaseInputStockUpdater(
             List<InventoryGoodsStockDO> inventoryGoodsStockDOS,
             InventoryGoodsStockManager inventoryGoodsStockManager,
-            WmsPurchaseInputOrderDTO purchaseInputOrderDTO) {
+            Map<Long, WmsPurchaseInputOrderItemDTO> purchaseInputOrderItemDTOMap) {
         super(inventoryGoodsStockDOS, inventoryGoodsStockManager);
-        this.purchaseInputOrderDTO = purchaseInputOrderDTO;
+
+        this.purchaseInputOrderItemDTOMap = purchaseInputOrderItemDTOMap;
     }
 
     /**
@@ -36,12 +40,13 @@ public class PurchaseInputStockUpdateCommand extends AbstractGoodsStockUpdaterCo
      */
     @Override
     protected void updateSalesStockQuantity() {
-
+        for (InventoryGoodsStockDO inventoryGoodsStockDO : inventoryGoodsStockDOS) {
+            inventoryGoodsStockDO.setSaleStockQuantity(inventoryGoodsStockDO.getSaledStockQuantity() + 1);
+        }
     }
 
     @Override
     protected void updateSaledStockQuantity() {
-
     }
 
     @Override

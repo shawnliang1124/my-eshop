@@ -1,4 +1,4 @@
-package utils;
+package com.shawnliang.eshop.utils;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package utils;
+package com.shawnliang.eshop.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -40,9 +40,7 @@ public class BeanUtil {
     }
 
     public static <T> List<T> copyPropertiesJson(List<?> source, Class<T> target, String[] ignoreProperties) {
-        return source == null ? null : (List)source.stream().map((item) -> {
-            return copyPropertiesJson(item, target, ignoreProperties);
-        }).collect(Collectors.toList());
+        return source == null ? null : source.stream().map((item) -> copyPropertiesJson(item, target, ignoreProperties)).collect(Collectors.toList());
     }
 
 }

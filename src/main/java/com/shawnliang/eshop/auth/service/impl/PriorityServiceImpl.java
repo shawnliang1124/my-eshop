@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.BeanUtil;
+import com.shawnliang.eshop.utils.BeanUtil;
 
 /**
  * Description :   .

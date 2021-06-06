@@ -9,7 +9,7 @@ import com.shawnliang.eshop.comment.service.CommentAggregateService;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.MathUtils;
+import com.shawnliang.eshop.utils.MathUtils;
 
 /**
  * Description :   .

@@ -58,7 +58,7 @@ public class CodeGender {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("")
-                .setParent("com.shawnliang.eshop.wms")
+                .setParent("com.shawnliang.eshop.promotion")
                 .setMapper("dao")
                 .setEntity("domain")
                 .setServiceImpl("manager")
@@ -141,7 +141,7 @@ public class CodeGender {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setEntityBuilderModel(true);
-        strategy.setInclude("wms_purchase_input_put_on_item");
+        strategy.setInclude("promotion_activity_goods_sku_relationship");
         mpg.setStrategy(strategy);
 
         mpg.execute();

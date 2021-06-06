@@ -2,6 +2,8 @@ package com.shawnliang.eshop.cart.domain;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -36,5 +38,11 @@ public class ShoppingCartDTO implements Serializable {
      * 更新时间
      */
     private LocalDateTime gmtModified;
+
+
+    /**
+     * 购物车条目明细
+     */
+    private List<ShoppingCartItemDTO> shoppingCartItemDTOList;
 
 }

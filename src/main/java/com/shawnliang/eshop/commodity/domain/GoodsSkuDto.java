@@ -36,6 +36,27 @@ public class GoodsSkuDto {
      * 折扣价格
      */
     private Double discountPrice;
+
+    /**
+     * 商品的毛重
+     */
+    private Double goodsWeight;
+
+    /**
+     * 商品长度
+     */
+    private Double goodsLength;
+
+    /**
+     * 商品高度
+     */
+    private Double goodsHeight;
+
+    /**
+     * 商品名称
+     */
+    private String goodsName;
+
     /**
      * 创建时间
      */

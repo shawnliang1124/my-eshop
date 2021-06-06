@@ -1,6 +1,8 @@
 package com.shawnliang.eshop.promotion.service;
 
 import com.shawnliang.eshop.promotion.domain.PromotionActivityDO;
+import com.shawnliang.eshop.promotion.domain.PromotionActivityDTO;
+
 import java.util.List;
 
 /**
@@ -17,7 +19,7 @@ public interface PromotionFacadeService {
      * @param goodsId 商品id
      * @return 促销活动
      */
-    List<PromotionActivityDO> listPromotionActivitiesByGoodsId(Long goodsId);
+    List<PromotionActivityDTO> listPromotionActivitiesByGoodsId(Long goodsId);
 
 
 }

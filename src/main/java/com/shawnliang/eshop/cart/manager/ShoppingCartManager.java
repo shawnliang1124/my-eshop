@@ -31,4 +31,5 @@ public class ShoppingCartManager extends ServiceImpl<ShoppingCartMapper, Shoppin
         return this.baseMapper.selectOne(queryWrapper);
     }
 
+
 }

@@ -1,8 +1,11 @@
-package com.shawnliang.eshop.inventory.command;
+package com.shawnliang.eshop.inventory.updater;
 
 import com.shawnliang.eshop.inventory.domain.InventoryGoodsStockDO;
 import com.shawnliang.eshop.inventory.manager.InventoryGoodsStockManager;
 import java.util.List;
+import java.util.Map;
+
+import com.shawnliang.eshop.order.domain.OrderItemDTO;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,15 +15,17 @@ import lombok.extern.slf4j.Slf4j;
  * @date : Created in 2021/5/21
  */
 @Slf4j
-public abstract class AbstractGoodsStockUpdaterCommand implements GoodsStockUpdateCommand {
+public abstract class AbstractGoodsStockUpdaterCommand implements GoodsStockUpdater {
 
     protected List<InventoryGoodsStockDO> inventoryGoodsStockDOS;
 
     protected InventoryGoodsStockManager inventoryGoodsStockManager;
 
-    public AbstractGoodsStockUpdaterCommand(List<InventoryGoodsStockDO> inventoryGoodsStockDO,
+    private Map<Long, OrderItemDTO> orderItemDTOMap;
+
+    public AbstractGoodsStockUpdaterCommand(List<InventoryGoodsStockDO> inventoryGoodsStockDOS,
             InventoryGoodsStockManager inventoryGoodsStockManager) {
-        this.inventoryGoodsStockDOS = inventoryGoodsStockDO;
+        this.inventoryGoodsStockDOS = inventoryGoodsStockDOS;
         this.inventoryGoodsStockManager = inventoryGoodsStockManager;
     }
 

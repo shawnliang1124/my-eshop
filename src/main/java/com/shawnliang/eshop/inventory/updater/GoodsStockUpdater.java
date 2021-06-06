@@ -1,4 +1,4 @@
-package com.shawnliang.eshop.inventory.command;
+package com.shawnliang.eshop.inventory.updater;
 
 /**
  * Description :   .
@@ -6,7 +6,7 @@ package com.shawnliang.eshop.inventory.command;
  * @author : Phoebe
  * @date : Created in 2021/5/21
  */
-public interface GoodsStockUpdateCommand {
+public interface GoodsStockUpdater {
 
     /**
      * 更新商品的库存

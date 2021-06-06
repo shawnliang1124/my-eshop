@@ -1,5 +1,7 @@
 package com.shawnliang.eshop.cart.service;
 
+import com.shawnliang.eshop.cart.domain.ShoppingCartDTO;
+
 /**
  * Description :   .
  *
@@ -14,5 +16,12 @@ public interface ShoppingCartService {
      * @param goodsSkuId
      */
     void addShoppingCartItem(Long userAccountId, Long goodsSkuId);
+
+    /**
+     * 根据用户id 查询购车车的数据
+     * @param userAccountId
+     * @return
+     */
+    ShoppingCartDTO getByUserAccountId(Long userAccountId);
 
 }

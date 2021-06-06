@@ -1,8 +1,11 @@
 package com.shawnliang.eshop.inventory.service;
 
 import com.shawnliang.eshop.order.domain.OrderDO;
+import com.shawnliang.eshop.order.domain.OrderInfoDTO;
 import com.shawnliang.eshop.wms.domain.PurchaseInputOrderDO;
 import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDO;
+import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDTO;
+import com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderDTO;
 
 /**
  * Description :   .
@@ -17,37 +20,37 @@ public interface InventoryFacadeService {
      * @param purchaseInputOrderDO 采购入库单DTO
      * @return 处理结果
      */
-    Boolean informPurchaseInputFinished(
-            PurchaseInputOrderDO purchaseInputOrderDO);
+    void informPurchaseInputFinished(
+            WmsPurchaseInputOrderDTO wmsPurchaseInputOrderDTO);
 
     /**
      * 通知库存中心，“提交订单”事件发生了
-     * @param orderDO 订单DTO
+     * @param orderInfoDTO 订单DTO
      * @return 处理结果
      */
-    Boolean informSubmitOrderEvent(OrderDO orderDO);
+    void informSubmitOrderEvent(OrderInfoDTO orderInfoDTO);
 
     /**
      * 通知库存中心，“支付订单”事件发生了
-     * @param orderDO 订单DTO
+     * @param orderInfoDTO 订单DTO
      * @return 处理结果
      */
-    Boolean informPayOrderEvent(OrderDO orderDO);
+    void informPayOrderEvent(OrderInfoDTO orderInfoDTO);
 
     /**
      * 通知库存中心，“取消订单”事件发生了
      * @param orderDO 订单DTO
      * @return 处理结果
      */
-    Boolean informCancelOrderEvent(OrderDO orderDO);
+    void informCancelOrderEvent(OrderInfoDTO orderInfoDTO);
 
     /**
      * 通知库存中心，“完成退货入库”事件发生了
-     * @param returnGoodsInputOrderDO 退货入库单DTO
+     * @param returnGoodsInputOrderDTO 退货入库单DTO
      * @return 处理结果
      */
-    Boolean informReturnGoodsInputFinished(
-            ReturnGoodsInputOrderDO returnGoodsInputOrderDO);
+    void informReturnGoodsInputFinished(
+            ReturnGoodsInputOrderDTO returnGoodsInputOrderDTO);
 
     /**
      * 查询商品sku的库存
