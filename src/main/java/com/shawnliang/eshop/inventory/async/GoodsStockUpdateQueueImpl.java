@@ -23,6 +23,8 @@ public class GoodsStockUpdateQueueImpl implements GoodsStockUpdateQueue{
     @Override
     public void put(GoodStockUpdateMessage message) throws InterruptedException {
         queue.put(message);
+
+        // TODO 如果队列再满的情况下·，就不要放到队列里面取了，只能丢到ipan上
     }
 
     @Override

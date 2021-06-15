@@ -2,22 +2,24 @@ package com.shawnliang.eshop.inventory.service.impl;
 
 import com.shawnliang.eshop.inventory.async.GoodStockUpdateMessage;
 import com.shawnliang.eshop.inventory.async.GoodsStockUpdateQueue;
+import com.shawnliang.eshop.inventory.async.StockUpdateResultManager;
 import com.shawnliang.eshop.inventory.constant.GoodsStockUpdateOperation;
 import com.shawnliang.eshop.inventory.domain.InventoryGoodsStockDO;
 import com.shawnliang.eshop.inventory.manager.InventoryGoodsStockManager;
 import com.shawnliang.eshop.inventory.service.InventoryFacadeService;
-import com.shawnliang.eshop.inventory.updater.*;
-import com.shawnliang.eshop.order.domain.OrderDO;
+import com.shawnliang.eshop.inventory.updater.CancelOrderStockUpdaterFactory;
+import com.shawnliang.eshop.inventory.updater.GoodsStockUpdater;
+import com.shawnliang.eshop.inventory.updater.PayOrderStockUpdaterFactory;
+import com.shawnliang.eshop.inventory.updater.PurchaseInputStockUpdaterFactory;
+import com.shawnliang.eshop.inventory.updater.ReturnGoodsStockUpdaterFactory;
+import com.shawnliang.eshop.inventory.updater.SubmitOrderGoodsStockUpdaterFactory;
 import com.shawnliang.eshop.order.domain.OrderInfoDTO;
-import com.shawnliang.eshop.wms.domain.PurchaseInputOrderDO;
-import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDO;
 import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDTO;
 import com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderDTO;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.logging.Logger;
 
 /**
  * 描述：.库存中心实现
@@ -54,6 +56,9 @@ public class InventoryFacadeServiceImpl implements InventoryFacadeService {
     @Autowired
     private GoodsStockUpdateQueue goodsStockUpdateQueue;
 
+    @Autowired
+    private StockUpdateResultManager stockUpdateResultManager;
+
     @Override
     public void informPurchaseInputFinished(WmsPurchaseInputOrderDTO wmsPurchaseInputOrderDTO) {
         GoodsStockUpdater goodsStockUpdater = purchaseInputStockUpdaterFactory.create(wmsPurchaseInputOrderDTO);
@@ -68,9 +73,13 @@ public class InventoryFacadeServiceImpl implements InventoryFacadeService {
 
             //  异步通知信息已经更新
             GoodStockUpdateMessage goodStockUpdateMessage = new GoodStockUpdateMessage();
-            goodStockUpdateMessage.setParameter(GoodsStockUpdateOperation.SUBMIT_ORDER);
+            goodStockUpdateMessage.setOperation(GoodsStockUpdateOperation.SUBMIT_ORDER);
+            goodStockUpdateMessage.setMsgId(UUID.randomUUID().toString().replace("-", ""));
             goodStockUpdateMessage.setParameter(orderInfoDTO);
             goodsStockUpdateQueue.put(goodStockUpdateMessage);
+
+            // 监听异步处理结果
+            stockUpdateResultManager.observe(goodStockUpdateMessage.getMsgId());
         } catch (Exception e) {
             log.error("error", e);
         }
@@ -84,9 +93,13 @@ public class InventoryFacadeServiceImpl implements InventoryFacadeService {
 
             //  异步通知信息通知更新库存
             GoodStockUpdateMessage goodStockUpdateMessage = new GoodStockUpdateMessage();
-            goodStockUpdateMessage.setParameter(GoodsStockUpdateOperation.PAY_ORDER);
+            goodStockUpdateMessage.setOperation(GoodsStockUpdateOperation.PAY_ORDER);
+            goodStockUpdateMessage.setMsgId(UUID.randomUUID().toString().replace("-", ""));
             goodStockUpdateMessage.setParameter(orderInfoDTO);
             goodsStockUpdateQueue.put(goodStockUpdateMessage);
+
+            // 监听异步处理结果
+            stockUpdateResultManager.observe(goodStockUpdateMessage.getMsgId());
         } catch (Exception e) {
             log.error("error", e);
         }
@@ -101,9 +114,13 @@ public class InventoryFacadeServiceImpl implements InventoryFacadeService {
 
             //  异步通知信息已经更新
             GoodStockUpdateMessage goodStockUpdateMessage = new GoodStockUpdateMessage();
-            goodStockUpdateMessage.setParameter(GoodsStockUpdateOperation.CANCEL_ORDER);
+            goodStockUpdateMessage.setOperation(GoodsStockUpdateOperation.CANCEL_ORDER);
             goodStockUpdateMessage.setParameter(orderInfoDTO);
+            goodStockUpdateMessage.setMsgId(UUID.randomUUID().toString().replace("-", ""));
             goodsStockUpdateQueue.put(goodStockUpdateMessage);
+
+            // 监听异步处理结果
+            stockUpdateResultManager.observe(goodStockUpdateMessage.getMsgId());
         } catch (Exception e) {
             log.error("error", e);
         }

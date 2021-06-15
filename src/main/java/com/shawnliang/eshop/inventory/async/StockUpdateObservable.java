@@ -1,7 +1,6 @@
 package com.shawnliang.eshop.inventory.async;
 
 import java.util.Observable;
-import lombok.Data;
 
 /**
  * Description :   .
@@ -9,7 +8,6 @@ import lombok.Data;
  * @author : Phoebe
  * @date : Created in 2021/6/7
  */
-@Data
 public class StockUpdateObservable extends Observable {
 
     /**
@@ -26,10 +24,12 @@ public class StockUpdateObservable extends Observable {
     }
 
     public void setResult(Boolean result) {
-        GoodStockUpdateMessage updateMessage = new GoodStockUpdateMessage();
+        StockUpdateResult goodsStockUpdateResult = new StockUpdateResult();
+        goodsStockUpdateResult.setMessageId(messageId);
+        goodsStockUpdateResult.setResult(result);
 
         this.setChanged();
-        this.notifyObservers(updateMessage);
+        this.notifyObservers(goodsStockUpdateResult);
     }
 
 }
