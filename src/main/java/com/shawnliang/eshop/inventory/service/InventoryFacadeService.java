@@ -1,9 +1,6 @@
 package com.shawnliang.eshop.inventory.service;
 
-import com.shawnliang.eshop.order.domain.OrderDO;
 import com.shawnliang.eshop.order.domain.OrderInfoDTO;
-import com.shawnliang.eshop.wms.domain.PurchaseInputOrderDO;
-import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDO;
 import com.shawnliang.eshop.wms.domain.ReturnGoodsInputOrderDTO;
 import com.shawnliang.eshop.wms.domain.WmsPurchaseInputOrderDTO;
 
@@ -39,7 +36,7 @@ public interface InventoryFacadeService {
 
     /**
      * 通知库存中心，“取消订单”事件发生了
-     * @param orderDO 订单DTO
+     * @param orderInfoDTO 订单DTO
      * @return 处理结果
      */
     void informCancelOrderEvent(OrderInfoDTO orderInfoDTO);

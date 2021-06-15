@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public class GoodStockUpdateMessage {
 
+    private String msgId;
+
     /**
      * 商品库存更新操作
      */
