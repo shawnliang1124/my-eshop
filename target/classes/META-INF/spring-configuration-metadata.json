@@ -11,12 +11,6 @@
       "sourceType": "com.shawnliang.eshop.comment.properties.BizCommentProperties"
     }
   ],
-  "properties": [
-    {
-      "name": "biz.comment.pic.pic-upload",
-      "type": "java.lang.String",
-      "sourceType": "com.shawnliang.eshop.comment.properties.BizCommentProperties$Pic"
-    }
-  ],
+  "properties": [],
   "hints": []
 }

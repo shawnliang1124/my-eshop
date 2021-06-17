@@ -58,7 +58,7 @@ public class CodeGender {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("")
-                .setParent("com.shawnliang.eshop.promotion")
+                .setParent("com.shawnliang.eshop.inventory")
                 .setMapper("dao")
                 .setEntity("domain")
                 .setServiceImpl("manager")
@@ -141,7 +141,7 @@ public class CodeGender {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setEntityBuilderModel(true);
-        strategy.setInclude("promotion_activity_goods_sku_relationship");
+        strategy.setInclude("inventory_goods_stock_offline");
         mpg.setStrategy(strategy);
 
         mpg.execute();
